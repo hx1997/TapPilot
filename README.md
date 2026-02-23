@@ -1,5 +1,7 @@
 # TapPilot
 
+[🇺🇸 English Version](README_EN.md) | [🇨🇳 中文版](README.md)
+
 一款基于视觉语言模型（VLM）的 Android GUI 自动化 agent 应用。通过自然语言描述任务，让 AI 自动操控你的手机完成各种操作。
 
 初衷是想要一个极简的移动端 GUI agent，简单配置下远程的模型提供商 API 就能用。
