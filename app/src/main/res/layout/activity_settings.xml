@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.settings.SettingsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Provider Selection Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_llm_provider"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Built-in Providers -->
+        <RadioGroup
+            android:id="@+id/providerRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/radioOpenAI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OpenAI GPT-4 Vision" />
+
+            <RadioButton
+                android:id="@+id/radioClaude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Claude 3 (Anthropic)" />
+
+            <RadioButton
+                android:id="@+id/radioGemini"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gemini Pro (Google)" />
+
+            <RadioButton
+                android:id="@+id/radioCustom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Custom Provider" />
+
+        </RadioGroup>
+
+        <!-- Custom Provider Selection (visible when radioCustom is selected) -->
+        <LinearLayout
+            android:id="@+id/customProviderSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <Spinner
+                android:id="@+id/customProviderSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddProvider"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ Add New Provider" />
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- API Keys Section (for built-in providers) -->
+        <LinearLayout
+            android:id="@+id/builtInApiKeysSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="API Keys (Built-in Providers)"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- OpenAI API Key -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/openAiKeyLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/settings_openai_key"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/openAiKeyInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Claude API Key -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/claudeKeyLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/settings_claude_key"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/claudeKeyInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Gemini API Key -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/geminiKeyLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/settings_gemini_key"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/geminiKeyInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- Options Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Options"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Enable Screenshots -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchScreenshots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:checked="true"
+            android:text="@string/settings_enable_screenshots" />
+
+        <!-- Execution Speed -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/settings_execution_speed" />
+
+        <SeekBar
+            android:id="@+id/speedSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:max="1000"
+            android:progress="500" />
+
+        <TextView
+            android:id="@+id/speedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="500ms delay between actions"
+            android:textColor="@android:color/darker_gray" />
+
+        <!-- Max Execution Steps -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Max Execution Steps" />
+
+        <SeekBar
+            android:id="@+id/maxStepsSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:max="100"
+            android:min="5"
+            android:progress="20" />
+
+        <TextView
+            android:id="@+id/maxStepsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20 steps maximum"
+            android:textColor="@android:color/darker_gray" />
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/settings_save" />
+
+    </LinearLayout>
+
+</ScrollView>
