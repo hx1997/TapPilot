@@ -107,7 +107,7 @@ app/
 4. **Execution** - Execute click/type operations through accessibility service
 5. **Loop** - Repeat above steps until task completion or maximum steps reached
 
-VLM receives the history of executed actions to avoid repetitive无效 operations. When the task is complete or stuck, it returns an empty array `[]` to end execution.
+VLM receives the history of executed actions to avoid repeating ineffective operations. When the task is complete or stuck, it returns an empty array `[]` to end execution.
 
 ## Dependencies
 
